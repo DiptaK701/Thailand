@@ -2,6 +2,14 @@
 
 import { useState } from "react";
 
+// Configuration constants for easy maintenance
+const SITE_CONFIG = {
+  contactEmail: "info@thailandgroupescape.com",
+  contactPhone: "+66 XXX XXX XXXX",
+  heroImageUrl: "/placeholder-hero.jpg",
+  companyName: "Thailand Group Escape",
+};
+
 export default function Home() {
   const [formData, setFormData] = useState({
     name: "",
@@ -13,7 +21,7 @@ export default function Home() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Form submission logic will be handled here
-    alert("Thank you! We'll contact you soon to plan your Thailand trip.");
+    alert("Thank you! We&apos;ll contact you soon to plan your Thailand trip.");
     setFormData({ name: "", phone: "", groupSize: "", travelMonth: "" });
   };
 
@@ -477,7 +485,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-yellow-400">Thailand Group Escape</h3>
+              <h3 className="text-2xl font-bold mb-4 text-yellow-400">{SITE_CONFIG.companyName}</h3>
               <p className="text-gray-300 mb-4">
                 Your premium gateway to an unforgettable Thailand experience
               </p>
@@ -491,8 +499,8 @@ export default function Home() {
 
             <div>
               <h4 className="text-xl font-bold mb-4">Contact Information</h4>
-              <p className="text-gray-300 mb-2">📧 Email: info@thailandgroupescape.com</p>
-              <p className="text-gray-300 mb-2">📱 Phone: +66 XXX XXX XXXX</p>
+              <p className="text-gray-300 mb-2">📧 Email: {SITE_CONFIG.contactEmail}</p>
+              <p className="text-gray-300 mb-2">📱 Phone: {SITE_CONFIG.contactPhone}</p>
               <p className="text-gray-300">💬 WhatsApp: Available 24/7</p>
             </div>
           </div>
@@ -510,7 +518,7 @@ export default function Home() {
 
           <div className="text-center mt-8 pt-8 border-t border-gray-700">
             <p className="text-gray-400">
-              © 2025 Thailand Group Escape. All rights reserved.
+              © 2025 {SITE_CONFIG.companyName}. All rights reserved.
             </p>
           </div>
         </div>

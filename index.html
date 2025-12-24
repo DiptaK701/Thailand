@@ -1,45 +1,1154 @@
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Thailand Group Trip&lt;/title&gt;
-    &lt;style&gt;
-        body {
-            font-family: Arial, sans-serif;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Bangkok Ultra-Luxury Fantasy Weekend</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Ultra-luxury all-inclusive fantasy weekend in Bangkok, Thailand. Private 6-star villa, concierge, security, gourmet dining, premium alcohol, pool party, and bespoke experiences." />
+
+    <style>
+        :root {
+            --bg-dark: #05060a;
+            --bg-card: #101119;
+            --gold: #d4af37;
+            --gold-soft: #f0e1b0;
+            --accent: #e6398f;
+            --accent-soft: rgba(230, 57, 143, 0.18);
+            --text-main: #f7f7f7;
+            --text-muted: #b7b7c9;
+            --border-subtle: #272737;
+            --shadow-soft: 0 26px 60px rgba(0, 0, 0, 0.65);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-pill: 999px;
+            --transition-fast: 0.25s ease;
+            --max-width: 1200px;
+            --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
         }
-        header {
-            background-color: #007bff;
-            color: white;
-            text-align: center;
-            padding: 20px;
+
+        body {
+            font-family: var(--font-main);
+            background: radial-gradient(circle at top left, #18192a 0, #05060a 55%);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
         }
-        section {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #28a745;
-            color: white;
+
+        a {
+            color: inherit;
             text-decoration: none;
-            border-radius: 5px;
         }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;header&gt;
-        &lt;h1&gt;Welcome to Thailand Group Trip&lt;/h1&gt;
-    &lt;/header&gt;
-    &lt;section&gt;
-        &lt;h2&gt;Experience the Beauty of Thailand&lt;/h2&gt;
-        &lt;p&gt;Join us for an unforgettable adventure in Thailand. Explore stunning beaches, ancient temples, and vibrant culture.&lt;/p&gt;
-        &lt;a href="gallery.html" class="button"&gt;View Gallery&lt;/a&gt;
-    &lt;/section&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .page {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top left, rgba(212, 175, 55, 0.15) 0, transparent 52%),
+                radial-gradient(circle at bottom right, rgba(230, 57, 143, 0.22) 0, transparent 55%);
+        }
+
+        .wrapper {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 20px 24px 60px;
+        }
+
+        /* Header */
+        header {
+            padding: 12px 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: radial-gradient(circle at 20% 0%, #f6f0d0 0, #d4af37 42%, #8b6b20 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1305;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+        }
+
+        .brand-text h1 {
+            font-size: 18px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold-soft);
+        }
+
+        .brand-text span {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pill-tag {
+            padding: 8px 16px;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--gold-soft);
+            background: rgba(3, 4, 9, 0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-button {
+            padding: 10px 20px;
+            border-radius: var(--radius-pill);
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--accent) 0, #f6b33b 100%);
+            color: #130710;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-cta {
+                align-self: stretch;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+
+        /* Hero Section - Full Width */
+        .hero {
+            background: linear-gradient(145deg, rgba(12, 12, 22, 0.96), rgba(5, 6, 14, 0.96));
+            border-radius: var(--radius-lg);
+            padding: 40px 36px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(230, 57, 143, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-top {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .hero-pill {
+            padding: 8px 14px;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold-soft);
+            background: rgba(7, 6, 2, 0.8);
+        }
+
+        .hero-label {
+            padding: 7px 12px;
+            border-radius: var(--radius-pill);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            background: rgba(230, 57, 143, 0.16);
+            color: #ffb8de;
+            border: 1px solid rgba(230, 57, 143, 0.45);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        .hero-title {
+            font-size: 42px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, #ffe8b5 0, #ffd37a 35%, #ff6bb8 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            max-width: 520px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+
+        .hero-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(10, 11, 20, 0.86);
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 20% 0%, #ffe8b5 0, #ff6bb8 100%);
+        }
+
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .cta-primary {
+            padding: 14px 28px;
+            border-radius: var(--radius-pill);
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(135deg, #f6e4b7 0, #f6b33b 50%, #ff6bb8 100%);
+            color: #150714;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            box-shadow: 0 18px 34px rgba(0, 0, 0, 0.7);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 22px 40px rgba(0, 0, 0, 0.85);
+        }
+
+        .cta-secondary {
+            padding: 13px 24px;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(6, 7, 15, 0.8);
+            color: var(--text-muted);
+            font-size: 12px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .cta-secondary:hover {
+            background: rgba(12, 13, 26, 0.9);
+            border-color: rgba(255, 255, 255, 0.5);
+            color: var(--text-main);
+        }
+
+        /* Hero Right - Metrics */
+        .hero-metrics {
+            display: grid;
+            gap: 16px;
+        }
+
+        .metric-card {
+            background: radial-gradient(circle at top left, rgba(212, 175, 55, 0.12), rgba(11, 12, 20, 0.9));
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .metric-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .metric-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gold-soft);
+        }
+
+        .metric-footnote {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: right;
+            max-width: 180px;
+        }
+
+        /* Experience Section */
+        .experience-section {
+            margin-bottom: 30px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold-soft);
+        }
+
+        .section-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            max-width: 400px;
+        }
+
+        .badge-premium {
+            padding: 8px 14px;
+            border-radius: var(--radius-pill);
+            background: rgba(212, 175, 55, 0.16);
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold-soft);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-premium-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 20% 0%, #ffe8b5 0, #f6b33b 60%, #8b6b20 100%);
+        }
+
+        /* Timeline Grid - Horizontal Layout */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 1100px) {
+            .timeline-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .timeline-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .timeline-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .timeline-card {
+            background: linear-gradient(145deg, rgba(12, 12, 22, 0.95), rgba(8, 8, 16, 0.98));
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 20px 18px;
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--accent) 100%);
+        }
+
+        .timeline-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(145deg, rgba(20, 20, 30, 0.95), rgba(10, 10, 18, 0.98));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 14px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-tag {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--gold-soft);
+            font-weight: 600;
+            padding: 4px 10px;
+            background: rgba(212, 175, 55, 0.12);
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            line-height: 1.3;
+        }
+
+        .timeline-body {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Inclusions & Pricing Row */
+        .bottom-row {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .bottom-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .inclusions {
+            border-radius: var(--radius-lg);
+            background: linear-gradient(145deg, rgba(10, 10, 18, 0.96), rgba(6, 6, 12, 0.98));
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            padding: 24px;
+        }
+
+        .inclusions-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .inclusions-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--gold-soft);
+        }
+
+        .inclusions-chip {
+            font-size: 10px;
+            padding: 6px 12px;
+            border-radius: var(--radius-pill);
+            background: rgba(36, 192, 107, 0.16);
+            color: #8ef0b8;
+            border: 1px solid rgba(36, 192, 107, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .inclusions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .inclusions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .inclusions-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .inclusions-bullet {
+            width: 8px;
+            height: 8px;
+            border-radius: 3px;
+            background: linear-gradient(135deg, #f6b33b, #ff6bb8);
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        /* Price Panel */
+        .price-panel {
+            border-radius: var(--radius-lg);
+            background: radial-gradient(circle at top left, rgba(255, 232, 181, 0.14), rgba(8, 8, 16, 0.98));
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .price-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .price-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold-soft);
+            margin-bottom: 8px;
+        }
+
+        .price-note {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .price-cta-button {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: var(--radius-pill);
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(135deg, #ff6bb8 0, #f6b33b 100%);
+            color: #150714;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            box-shadow: 0 12px 26px rgba(0, 0, 0, 0.5);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .price-cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Details Grid */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 800px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .detail-card {
+            border-radius: var(--radius-md);
+            padding: 20px;
+            background: rgba(7, 8, 15, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .detail-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--gold-soft);
+            margin-bottom: 10px;
+        }
+
+        .detail-body {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .detail-list {
+            margin-top: 8px;
+            list-style: none;
+        }
+
+        .detail-list li {
+            margin-bottom: 6px;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .detail-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 5px;
+            height: 5px;
+            border-radius: 2px;
+            background: var(--gold);
+        }
+
+        .fine-print {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 10px;
+            opacity: 0.7;
+        }
+
+        /* Booking Form */
+        .booking-section {
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        .booking-form-container {
+            background: linear-gradient(145deg, rgba(12, 12, 22, 0.96), rgba(8, 8, 16, 0.98));
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 36px 32px;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--accent) 100%);
+        }
+
+        .booking-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .booking-title {
+            font-size: 24px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold-soft);
+            margin-bottom: 8px;
+        }
+
+        .booking-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 700px) {
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--gold-soft);
+            font-weight: 600;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(6, 6, 12, 0.8);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            font-size: 14px;
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+        }
+
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b7b7c9' d='M6 8L2 4h8z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+        }
+
+        .form-select option {
+            background: #0a0a12;
+            color: var(--text-main);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            grid-column: 1 / -1;
+            padding: 16px 32px;
+            border-radius: var(--radius-pill);
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(135deg, #f6e4b7 0, #f6b33b 50%, #ff6bb8 100%);
+            color: #150714;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            box-shadow: 0 18px 34px rgba(0, 0, 0, 0.5);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            margin-top: 10px;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 22px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        .form-note {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        section {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="wrapper">
+            <!-- Header -->
+            <header>
+                <div class="brand">
+                    <div class="brand-badge">B</div>
+                    <div class="brand-text">
+                        <h1>Bangkok Bespoke</h1>
+                        <span>Ultra-Luxury Weekends</span>
+                    </div>
+                </div>
+                <div class="nav-cta">
+                    <div class="pill-tag">Minimum 5 guests · Adults only</div>
+                    <button class="nav-button"
+                        onclick="document.getElementById('booking-form').scrollIntoView({behavior:'smooth'})">
+                        Enquire Now
+                    </button>
+                </div>
+            </header>
+
+            <!-- Hero Section - Full Width -->
+            <section class="hero">
+                <div class="hero-top">
+                    <div class="hero-pill">Bangkok · 1 Night / 2 Days</div>
+                    <div class="hero-label">All-inclusive · Ultra luxury</div>
+                </div>
+
+                <div class="hero-content">
+                    <div class="hero-left">
+                        <h2 class="hero-title">
+                            The <span>Ultra-Luxury Fantasy Weekend</span> in Thailand.
+                        </h2>
+
+                        <p class="hero-subtitle">
+                            Arrive in Bangkok on Saturday morning and step straight into a curated world of discretion,
+                            indulgence, and seamless concierge service, crafted for intimate groups who expect the
+                            impossible.
+                        </p>
+
+                        <div class="hero-badges">
+                            <div class="hero-badge">
+                                <span class="hero-badge-dot"></span>
+                                Private 6‑star residence · 24/7 staff
+                            </div>
+                            <div class="hero-badge">
+                                <span class="hero-badge-dot"></span>
+                                Gourmet global cuisine by master chefs
+                            </div>
+                            <div class="hero-badge">
+                                <span class="hero-badge-dot"></span>
+                                Premium open‑bar & curated pool party
+                            </div>
+                        </div>
+
+                        <div class="cta-row">
+                            <button class="cta-primary"
+                                onclick="document.getElementById('booking-form').scrollIntoView({behavior:'smooth'})">
+                                Reserve your weekend
+                            </button>
+                            <button class="cta-secondary" onclick="window.location.href='gallery.html'">
+                                View Gallery
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="hero-metrics">
+                        <div class="metric-card">
+                            <div>
+                                <div class="metric-label">Group size</div>
+                                <div class="metric-value">Minimum 5</div>
+                            </div>
+                            <div class="metric-footnote">Perfect for curated circles and private celebrations.</div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div>
+                                <div class="metric-label">Stay window</div>
+                                <div class="metric-value">Sat → Sun</div>
+                            </div>
+                            <div class="metric-footnote">Arrive Saturday morning, depart Sunday evening.</div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div>
+                                <div class="metric-label">Package price</div>
+                                <div class="metric-value">₹1,40,000*</div>
+                            </div>
+                            <div class="metric-footnote">Per person · Flights not included.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section - Horizontal Timeline -->
+            <section class="experience-section" id="itinerary">
+                <div class="section-header">
+                    <div>
+                        <div class="section-title">Your 30-hour escape</div>
+                        <p class="section-subtitle">A tightly choreographed, fantasy-first itinerary from the moment you
+                            land.</p>
+                    </div>
+                    <div class="badge-premium">
+                        <span class="badge-premium-dot"></span>
+                        Curated for premium guests
+                    </div>
+                </div>
+
+                <div class="timeline-grid">
+                    <div class="timeline-card">
+                        <div class="timeline-icon">✈️</div>
+                        <div class="timeline-tag">Arrival</div>
+                        <div class="timeline-title">Private airport reception</div>
+                        <p class="timeline-body">Meet your concierge team and transfer to your residence in a luxury
+                            vehicle with discreet security.</p>
+                    </div>
+
+                    <div class="timeline-card">
+                        <div class="timeline-icon">🏡</div>
+                        <div class="timeline-tag">Residence</div>
+                        <div class="timeline-title">6‑star private villa</div>
+                        <p class="timeline-body">Exclusive-use accommodation with private rooms, shared pool, and
+                            24-hour dedicated staff.</p>
+                    </div>
+
+                    <div class="timeline-card">
+                        <div class="timeline-icon">🍽️</div>
+                        <div class="timeline-tag">Dining</div>
+                        <div class="timeline-title">World-class cuisine</div>
+                        <p class="timeline-body">Master chefs craft global cuisine paired with premium, free-flowing
+                            alcohol.</p>
+                    </div>
+
+                    <div class="timeline-card">
+                        <div class="timeline-icon">🎉</div>
+                        <div class="timeline-tag">Saturday Night</div>
+                        <div class="timeline-title">Private pool party</div>
+                        <p class="timeline-body">High-energy, invitation-only party with premium entertainment and
+                            curated guests.</p>
+                    </div>
+
+                    <div class="timeline-card">
+                        <div class="timeline-icon">🌅</div>
+                        <div class="timeline-tag">Sunday</div>
+                        <div class="timeline-title">Brunch & departure</div>
+                        <p class="timeline-body">Slow poolside brunch before seamless airport transfer for your evening
+                            flight.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Inclusions & Pricing -->
+            <section class="bottom-row" id="booking">
+                <div class="inclusions">
+                    <div class="inclusions-header">
+                        <div class="inclusions-title">What's included</div>
+                        <div class="inclusions-chip">All inclusive</div>
+                    </div>
+
+                    <div class="inclusions-grid">
+                        <div class="inclusions-item">
+                            <div class="inclusions-bullet"></div>
+                            <div>Private arrival and departure transfers with concierge and security.</div>
+                        </div>
+                        <div class="inclusions-item">
+                            <div class="inclusions-bullet"></div>
+                            <div>6‑star accommodation with individual private rooms and shared pool.</div>
+                        </div>
+                        <div class="inclusions-item">
+                            <div class="inclusions-bullet"></div>
+                            <div>Dedicated 24/7 service staff for your group.</div>
+                        </div>
+                        <div class="inclusions-item">
+                            <div class="inclusions-bullet"></div>
+                            <div>All meals curated by master chefs.</div>
+                        </div>
+                        <div class="inclusions-item">
+                            <div class="inclusions-bullet"></div>
+                            <div>Unlimited premium alcohol including spirits, wines, and champagne.</div>
+                        </div>
+                        <div class="inclusions-item">
+                            <div class="inclusions-bullet"></div>
+                            <div>Saturday night private pool party with top-tier entertainment.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price-panel">
+                    <div class="price-label">Investment</div>
+                    <div class="price-value">₹1,40,000</div>
+                    <div class="price-note">
+                        Per person · Minimum 5 guests · Flights not included · Arrive Saturday morning, depart Sunday
+                        evening.
+                    </div>
+                    <button class="price-cta-button"
+                        onclick="document.getElementById('booking-form').scrollIntoView({behavior:'smooth'})">Start your
+                        reservation</button>
+                </div>
+            </section>
+
+            <!-- Details -->
+            <section class="details-grid">
+                <div class="detail-card">
+                    <div class="detail-title">Who this is for</div>
+                    <div class="detail-body">
+                        Crafted for discerning groups who value privacy, seamless hosting, and elevated social
+                        environments.
+                        <ul class="detail-list">
+                            <li>Curated groups of close friends or private networks.</li>
+                            <li>Celebrations, milestones, or "just because" escapes.</li>
+                            <li>Guests who expect confidentiality and quality above all.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-title">Important notes</div>
+                    <div class="detail-body">
+                        <ul class="detail-list">
+                            <li>₹1,40,000 per person, all-inclusive except flights.</li>
+                            <li>Guests must arrange their own international flights.</li>
+                            <li>Check-in Saturday morning, check-out Sunday evening.</li>
+                            <li>Minimum 5 guests; larger groups quoted on request.</li>
+                            <li>All experiences subject to local laws and house policies.</li>
+                        </ul>
+                        <p class="fine-print">
+                            Sample concept website. Replace with your company details and legal terms.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Booking Form -->
+            <section class="booking-section" id="booking-form">
+                <div class="booking-form-container">
+                    <div class="booking-header">
+                        <h2 class="booking-title">Reserve Your Weekend</h2>
+                        <p class="booking-subtitle">Share your details and preferences. A dedicated concierge will
+                            connect with you privately within 24 hours.</p>
+                    </div>
+
+                    <form class="booking-form"
+                        onsubmit="event.preventDefault(); alert('Thank you! Your reservation request has been submitted. Our concierge will contact you shortly.');">
+                        <div class="form-group">
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" class="form-input" placeholder="Your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" class="form-input" placeholder="your@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Phone / WhatsApp *</label>
+                            <input type="tel" class="form-input" placeholder="+91 98765 43210" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Group Size *</label>
+                            <select class="form-select" required>
+                                <option value="" disabled selected>Select group size</option>
+                                <option value="5">5 guests</option>
+                                <option value="6">6 guests</option>
+                                <option value="7">7 guests</option>
+                                <option value="8">8 guests</option>
+                                <option value="9">9 guests</option>
+                                <option value="10+">10+ guests</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Preferred Weekend</label>
+                            <input type="text" class="form-input" placeholder="e.g., Last week of January 2025">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Alternate Weekend</label>
+                            <input type="text" class="form-input" placeholder="e.g., First week of February 2025">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label class="form-label">Special Requests / Expectations</label>
+                            <textarea class="form-textarea"
+                                placeholder="Tell us about any special requirements, dietary restrictions, celebration details, or specific expectations for your experience..."></textarea>
+                        </div>
+
+                        <button type="submit" class="form-submit">Submit Reservation Request</button>
+
+                        <p class="form-note">Your information is kept strictly confidential. We'll reply within 24 hours
+                            to discuss availability and finalize your booking.</p>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

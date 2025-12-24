@@ -268,6 +268,57 @@
       color: #130710;
       margin-left: 3px;
     }
+
+    /* Details & fine print section */
+
+    .details-grid {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 880px) {
+      .details-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .detail-card {
+      border-radius: 18px;
+      padding: 16px 16px 15px;
+      background: rgba(7, 8, 15, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .detail-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--gold-soft);
+      margin-bottom: 8px;
+    }
+
+    .detail-body {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .detail-list {
+      margin-top: 6px;
+      list-style: none;
+    }
+
+    .detail-list li {
+      margin-bottom: 5px;
+    }
+
+    .fine-print {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
   </style>
 </head>
 
@@ -398,6 +449,39 @@
                 <div class="video-play-icon">▶</div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Details & fine print -->
+      <section class="details-grid">
+        <div class="detail-card">
+          <div class="detail-title">Who this is designed for</div>
+          <div class="detail-body">
+            This weekend is crafted for discerning groups who value privacy, seamless hosting, and an elevated social environment where every moment feels intentional.
+            <ul class="detail-list">
+              <li>Curated groups of close friends or private networks.</li>
+              <li>Celebrations, milestones, or "just because" escapes.</li>
+              <li>Guests who expect confidentiality, quality, and speed of service above everything else.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="detail-card">
+          <div class="detail-title">Important notes & conditions</div>
+          <div class="detail-body">
+            Please read carefully before booking:
+            <ul class="detail-list">
+              <li>Package cost is ₹1,40,000 per person and is all-inclusive for the duration of the stay, except flights.</li>
+              <li>International flights to and from Bangkok are not included; guests must arrange their own travel.</li>
+              <li>Check-in begins on Saturday morning; all guests must arrive in Bangkok by that time.</li>
+              <li>Check-out and airport transfers are planned for Sunday evening.</li>
+              <li>Minimum group size: 5 paying guests. Larger groups can be quoted on request.</li>
+              <li>All experiences are subject to local laws, regulations, and house policies; responsible conduct is expected at all times.</li>
+            </ul>
+            <p class="fine-print">
+              This is a sample concept website. Replace contact flows and legal text with your specific company details, licenses, and jurisdictional terms as required.
+            </p>
           </div>
         </div>
       </section>

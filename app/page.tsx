@@ -41,27 +41,23 @@ export default function Home() {
         
         <div className="relative z-20 text-center px-4 max-w-5xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Thailand Group Escape
+            Thailand Luxury Group Trip (5–6 People)
           </h1>
-          <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-cyan-300">
-            Luxury Party Trip for 5–6 People
-          </h2>
-          <p className="text-xl md:text-2xl mb-10 text-gray-200">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-cyan-300">
             All-inclusive stay, food, alcohol, entertainment & airport transfers
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          </h2>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
             <a
-              href="#contact"
+              href="#pricing"
               className="px-8 py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black font-bold text-lg rounded-full hover:from-yellow-600 hover:to-yellow-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
-              Check Availability
+              View Package Details
             </a>
             <a
-              href="#itinerary"
+              href="#contact"
               className="px-8 py-4 bg-transparent border-2 border-cyan-400 text-cyan-400 font-bold text-lg rounded-full hover:bg-cyan-400 hover:text-black transition-all shadow-lg"
             >
-              Get Full Itinerary
+              Check Availability
             </a>
           </div>
         </div>
@@ -212,7 +208,7 @@ export default function Home() {
       </section>
 
       {/* Cost Breakdown */}
-      <section className="py-20 px-4 bg-white">
+      <section id="pricing" className="py-20 px-4 bg-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-slate-900">
             Transparent Pricing
@@ -304,12 +300,12 @@ export default function Home() {
             📸 Images will be updated soon
           </p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Placeholder 1 */}
             <div className="aspect-square bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl shadow-lg flex items-center justify-center text-white text-center p-6">
               <div>
                 <div className="text-6xl mb-4">🏨</div>
-                <h3 className="text-2xl font-bold">Luxury Stay</h3>
+                <h3 className="text-2xl font-bold">Luxury Villa</h3>
               </div>
             </div>
 
@@ -334,6 +330,22 @@ export default function Home() {
               <div>
                 <div className="text-6xl mb-4">🍸</div>
                 <h3 className="text-2xl font-bold">Premium Drinks</h3>
+              </div>
+            </div>
+
+            {/* Placeholder 5 */}
+            <div className="aspect-square bg-gradient-to-br from-red-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center text-white text-center p-6">
+              <div>
+                <div className="text-6xl mb-4">🍽️</div>
+                <h3 className="text-2xl font-bold">Gourmet Dining</h3>
+              </div>
+            </div>
+
+            {/* Placeholder 6 */}
+            <div className="aspect-square bg-gradient-to-br from-indigo-400 to-purple-500 rounded-xl shadow-lg flex items-center justify-center text-white text-center p-6">
+              <div>
+                <div className="text-6xl mb-4">🎭</div>
+                <h3 className="text-2xl font-bold">Entertainment</h3>
               </div>
             </div>
           </div>
@@ -456,7 +468,7 @@ export default function Home() {
 
               <div>
                 <label htmlFor="travelMonth" className="block text-lg font-semibold mb-2 text-slate-900">
-                  Preferred Travel Month *
+                  Preferred Month *
                 </label>
                 <input
                   type="text"

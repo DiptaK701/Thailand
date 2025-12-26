@@ -36,7 +36,7 @@
 
         body {
             font-family: var(--font-main);
-            background: radial-gradient(circle at top left, #18192a 0, #05060a 55%);
+            background: var(--bg-dark);
             color: var(--text-main);
             -webkit-font-smoothing: antialiased;
         }
@@ -51,11 +51,148 @@
             display: block;
         }
 
-        .page {
-            min-height: 100vh;
+        /* Fullscreen Background Slideshow */
+        .page-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .page-bg-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .page-bg-slide.active {
+            opacity: 1;
+        }
+
+        .page-bg-slide:nth-child(1) {
+            background-image: url('images/thailand-beach.jpg');
+            animation: kenburns1 24s ease-in-out infinite;
+        }
+
+        .page-bg-slide:nth-child(2) {
+            background-image: url('images/thailand-temple.png');
+            animation: kenburns2 24s ease-in-out infinite;
+        }
+
+        .page-bg-slide:nth-child(3) {
+            background-image: url('images/thailand-rocks.jpg');
+            animation: kenburns3 24s ease-in-out infinite;
+        }
+
+        @keyframes kenburns1 {
+
+            0%,
+            100% {
+                transform: scale(1) translate(0, 0);
+            }
+
+            50% {
+                transform: scale(1.08) translate(-1%, -1%);
+            }
+        }
+
+        @keyframes kenburns2 {
+
+            0%,
+            100% {
+                transform: scale(1.02) translate(0, 0);
+            }
+
+            50% {
+                transform: scale(1.1) translate(1%, -0.5%);
+            }
+        }
+
+        @keyframes kenburns3 {
+
+            0%,
+            100% {
+                transform: scale(1) translate(0, 0);
+            }
+
+            50% {
+                transform: scale(1.06) translate(-0.5%, 1%);
+            }
+        }
+
+        .page-bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg,
+                    rgba(5, 6, 10, 0.75) 0%,
+                    rgba(5, 6, 10, 0.65) 30%,
+                    rgba(5, 6, 10, 0.7) 70%,
+                    rgba(5, 6, 10, 0.9) 100%);
+            z-index: 1;
+        }
+
+        .page-bg-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background:
-                radial-gradient(circle at top left, rgba(212, 175, 55, 0.15) 0, transparent 52%),
-                radial-gradient(circle at bottom right, rgba(230, 57, 143, 0.22) 0, transparent 55%);
+                radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(230, 57, 143, 0.1) 0%, transparent 50%);
+        }
+
+        /* Page Indicator Dots */
+        .page-bg-dots {
+            position: fixed;
+            left: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        .bg-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bg-dot.active {
+            background: transparent;
+            border-color: var(--gold);
+            transform: scale(1.3);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .bg-dot:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.15);
+        }
+
+        .page {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
         }
 
         .wrapper {
@@ -850,10 +987,309 @@
         section {
             scroll-margin-top: 80px;
         }
+
+        /* Hero Image Gallery - Animated Background */
+        .hero-gallery {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            z-index: 0;
+            border-radius: var(--radius-lg);
+        }
+
+        .hero-gallery-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            animation: kenburns 20s ease-in-out infinite;
+        }
+
+        .hero-gallery-slide.active {
+            opacity: 1;
+        }
+
+        .hero-gallery-slide:nth-child(1) {
+            background-image: url('images/thailand-beach.jpg');
+        }
+
+        .hero-gallery-slide:nth-child(2) {
+            background-image: url('images/thailand-temple.png');
+        }
+
+        .hero-gallery-slide:nth-child(3) {
+            background-image: url('images/thailand-rocks.jpg');
+        }
+
+        @keyframes kenburns {
+            0% {
+                transform: scale(1) translateX(0);
+            }
+
+            50% {
+                transform: scale(1.08) translateX(-1%);
+            }
+
+            100% {
+                transform: scale(1) translateX(0);
+            }
+        }
+
+        .hero-gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg,
+                    rgba(5, 6, 10, 0.92) 0%,
+                    rgba(5, 6, 10, 0.85) 30%,
+                    rgba(5, 6, 10, 0.75) 70%,
+                    rgba(5, 6, 10, 0.88) 100%);
+            z-index: 1;
+        }
+
+        .hero-gallery-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(230, 57, 143, 0.12) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Hero Content z-index fix */
+        .hero-content,
+        .hero-top {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Gallery Navigation Dots */
+        .hero-gallery-nav {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        .gallery-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--gold);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-dot.active {
+            background: transparent;
+            border-color: var(--gold);
+            transform: scale(1.2);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        .gallery-dot.active::before {
+            width: 6px;
+            height: 6px;
+        }
+
+        .gallery-dot:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        /* Hero section position fix for gallery */
+        .hero {
+            position: relative;
+            background: transparent;
+            min-height: 520px;
+        }
+
+        /* Animated entrance for hero content */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.92);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-top {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .hero-left {
+            animation: fadeInRight 1s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-title {
+            animation: fadeInUp 1s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        .hero-subtitle {
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        .hero-badges {
+            animation: fadeInUp 1s ease-out 0.8s forwards;
+            opacity: 0;
+        }
+
+        .cta-row {
+            animation: fadeInUp 1s ease-out 1s forwards;
+            opacity: 0;
+        }
+
+        .hero-metrics {
+            animation: slideInScale 1.2s ease-out 0.5s forwards;
+            opacity: 0;
+        }
+
+        /* Image shimmer effect */
+        .hero-gallery-slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.03),
+                    transparent);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                left: -100%;
+            }
+
+            50% {
+                left: 200%;
+            }
+        }
+
+        /* Floating decoration elements */
+        .hero-decor {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-decor-1 {
+            top: 10%;
+            right: 15%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-decor-2 {
+            bottom: 20%;
+            left: 10%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(230, 57, 143, 0.08) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-20px) scale(1.05);
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- Fullscreen Background Slideshow -->
+    <div class="page-bg">
+        <div class="page-bg-slide active"></div>
+        <div class="page-bg-slide"></div>
+        <div class="page-bg-slide"></div>
+        <div class="page-bg-overlay"></div>
+    </div>
+
+    <!-- Background Navigation Dots -->
+    <div class="page-bg-dots">
+        <div class="bg-dot active" data-slide="0"></div>
+        <div class="bg-dot" data-slide="1"></div>
+        <div class="bg-dot" data-slide="2"></div>
+    </div>
+
     <div class="page">
         <div class="wrapper">
             <!-- Header -->
@@ -876,6 +1312,23 @@
 
             <!-- Hero Section - Full Width -->
             <section class="hero">
+                <!-- Animated Image Gallery Background -->
+                <div class="hero-gallery">
+                    <div class="hero-gallery-slide active"></div>
+                    <div class="hero-gallery-slide"></div>
+                    <div class="hero-gallery-slide"></div>
+                    <div class="hero-gallery-overlay"></div>
+                    <div class="hero-decor hero-decor-1"></div>
+                    <div class="hero-decor hero-decor-2"></div>
+                </div>
+
+                <!-- Gallery Navigation Dots -->
+                <div class="hero-gallery-nav">
+                    <div class="gallery-dot active" data-slide="0"></div>
+                    <div class="gallery-dot" data-slide="1"></div>
+                    <div class="gallery-dot" data-slide="2"></div>
+                </div>
+
                 <div class="hero-top">
                     <div class="hero-pill">Bangkok · 1 Night / 2 Days</div>
                     <div class="hero-label">All-inclusive · Ultra luxury</div>
@@ -1149,6 +1602,101 @@
             </section>
         </div>
     </div>
+
+    <script>
+        // Page Background Slideshow
+        (function () {
+            const bgSlides = document.querySelectorAll('.page-bg-slide');
+            const bgDots = document.querySelectorAll('.bg-dot');
+            let currentBgSlide = 0;
+            let bgAutoSlideInterval;
+
+            function showBgSlide(index) {
+                bgSlides.forEach(slide => slide.classList.remove('active'));
+                bgDots.forEach(dot => dot.classList.remove('active'));
+
+                bgSlides[index].classList.add('active');
+                bgDots[index].classList.add('active');
+
+                currentBgSlide = index;
+            }
+
+            function nextBgSlide() {
+                const next = (currentBgSlide + 1) % bgSlides.length;
+                showBgSlide(next);
+            }
+
+            function startBgAutoSlide() {
+                bgAutoSlideInterval = setInterval(nextBgSlide, 6000);
+            }
+
+            function resetBgAutoSlide() {
+                clearInterval(bgAutoSlideInterval);
+                startBgAutoSlide();
+            }
+
+            // Dot click handlers for page background
+            bgDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showBgSlide(index);
+                    resetBgAutoSlide();
+                });
+            });
+
+            // Start the background slideshow
+            startBgAutoSlide();
+        })();
+
+        // Hero Gallery Slideshow (synced with page background)
+        (function () {
+            const slides = document.querySelectorAll('.hero-gallery-slide');
+            const dots = document.querySelectorAll('.gallery-dot');
+
+            if (slides.length === 0) return;
+
+            let currentSlide = 0;
+            let autoSlideInterval;
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                const next = (currentSlide + 1) % slides.length;
+                showSlide(next);
+            }
+
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 6000);
+            }
+
+            function stopAutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    stopAutoSlide();
+                    showSlide(index);
+                    startAutoSlide();
+                });
+            });
+
+            const heroGallery = document.querySelector('.hero-gallery');
+            if (heroGallery) {
+                heroGallery.addEventListener('mouseenter', stopAutoSlide);
+                heroGallery.addEventListener('mouseleave', startAutoSlide);
+            }
+
+            startAutoSlide();
+        })();
+    </script>
 </body>
 
 </html>

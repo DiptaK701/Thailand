@@ -1531,9 +1531,7 @@
                             <li>Minimum 5 guests; larger groups quoted on request.</li>
                             <li>All experiences subject to local laws and house policies.</li>
                         </ul>
-                        <p class="fine-print">
-                            Sample concept website. Replace with your company details and legal terms.
-                        </p>
+
                     </div>
                 </div>
             </section>
@@ -1545,28 +1543,44 @@
                         <h2 class="booking-title">Reserve Your Weekend</h2>
                         <p class="booking-subtitle">Share your details and preferences. A dedicated concierge will
                             connect with you privately within 24 hours.</p>
+
+                        <div
+                            style="margin-top: 24px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                            <a href="tel:+66638074119" style="text-decoration: none;">
+                                <div class="pill-tag"
+                                    style="background: rgba(212, 175, 55, 0.1); cursor: pointer; border: 1px solid rgba(212, 175, 55, 0.45); color: var(--gold-soft);">
+                                    📞 +66 63 807 4119 (24/7)
+                                </div>
+                            </a>
+                            <a href="https://wa.me/66638074119" target="_blank" style="text-decoration: none;">
+                                <div class="pill-tag"
+                                    style="background: rgba(36, 192, 107, 0.15); cursor: pointer; border: 1px solid rgba(36, 192, 107, 0.5); color: #8ef0b8;">
+                                    💬 Chat on WhatsApp
+                                </div>
+                            </a>
+                        </div>
                     </div>
 
-                    <form class="booking-form"
-                        onsubmit="event.preventDefault(); alert('Thank you! Your reservation request has been submitted. Our concierge will contact you shortly.');">
+                    <form class="booking-form" id="booking-form-element" action="https://formspree.io/f/YOUR_FORM_ID"
+                        method="POST">
                         <div class="form-group">
                             <label class="form-label">Full Name *</label>
-                            <input type="text" class="form-input" placeholder="Your full name" required>
+                            <input type="text" name="name" class="form-input" placeholder="Your full name" required>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Email Address *</label>
-                            <input type="email" class="form-input" placeholder="your@email.com" required>
+                            <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Phone / WhatsApp *</label>
-                            <input type="tel" class="form-input" placeholder="+91 98765 43210" required>
+                            <input type="tel" name="phone" class="form-input" placeholder="+91 98765 43210" required>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Group Size *</label>
-                            <select class="form-select" required>
+                            <select class="form-select" name="group_size" required>
                                 <option value="" disabled selected>Select group size</option>
                                 <option value="5">5 guests</option>
                                 <option value="6">6 guests</option>
@@ -1579,25 +1593,72 @@
 
                         <div class="form-group">
                             <label class="form-label">Preferred Weekend</label>
-                            <input type="text" class="form-input" placeholder="e.g., Last week of January 2025">
+                            <input type="text" name="weekend_preferred" class="form-input"
+                                placeholder="e.g., Last week of January 2025">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Alternate Weekend</label>
-                            <input type="text" class="form-input" placeholder="e.g., First week of February 2025">
+                            <input type="text" name="weekend_alternate" class="form-input"
+                                placeholder="e.g., First week of February 2025">
                         </div>
 
                         <div class="form-group full-width">
                             <label class="form-label">Special Requests / Expectations</label>
-                            <textarea class="form-textarea"
+                            <textarea class="form-textarea" name="message"
                                 placeholder="Tell us about any special requirements, dietary restrictions, celebration details, or specific expectations for your experience..."></textarea>
                         </div>
+
+                        <div class="form-group full-width" id="form-status"></div>
 
                         <button type="submit" class="form-submit">Submit Reservation Request</button>
 
                         <p class="form-note">Your information is kept strictly confidential. We'll reply within 24 hours
                             to discuss availability and finalize your booking.</p>
                     </form>
+
+                    <script>
+                        const form = document.getElementById("booking-form-element");
+
+                        async function handleSubmit(event) {
+                            event.preventDefault();
+                            const status = document.getElementById("form-status");
+                            const data = new FormData(event.target);
+
+                            // Check if the placeholder ID is still present
+                            if (form.action.includes("YOUR_FORM_ID")) {
+                                status.innerHTML = "<div style='padding: 15px; border-radius: 8px; background: rgba(255, 193, 7, 0.2); border: 1px solid #ffc107; color: #ffc107; text-align: center; margin-bottom: 15px;'>⚠️ <strong>Setup Required:</strong> Please replace 'YOUR_FORM_ID' in the HTML with your actual Formspree Form ID.</div>";
+                                return;
+                            }
+
+                            status.innerHTML = "<div style='color: var(--gold-soft); text-align: center; margin-bottom: 15px;'>Sending your request...</div>";
+
+                            fetch(event.target.action, {
+                                method: form.method,
+                                body: data,
+                                headers: {
+                                    'Accept': 'application/json'
+                                }
+                            }).then(response => {
+                                if (response.ok) {
+                                    status.innerHTML = "<div style='padding: 15px; border-radius: 8px; background: rgba(36, 192, 107, 0.2); border: 1px solid #24c06b; color: #8ef0b8; text-align: center; margin-bottom: 15px;'>✅ Thank you! Your reservation request has been submitted. Our concierge will contact you shortly.</div>";
+                                    form.reset();
+                                } else {
+                                    response.json().then(data => {
+                                        if (Object.hasOwn(data, 'errors')) {
+                                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                                        } else {
+                                            status.innerHTML = "<div style='color: #ff6b6b; text-align: center; margin-bottom: 15px;'>Oops! There was a problem submitting your form.</div>";
+                                        }
+                                    })
+                                }
+                            }).catch(error => {
+                                status.innerHTML = "<div style='color: #ff6b6b; text-align: center; margin-bottom: 15px;'>Oops! There was a problem submitting your form.</div>";
+                            });
+                        }
+
+                        form.addEventListener("submit", handleSubmit);
+                    </script>
                 </div>
             </section>
         </div>

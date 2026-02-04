@@ -5,7 +5,7 @@ import { useState } from "react";
 // Configuration constants for easy maintenance
 const SITE_CONFIG = {
   contactEmail: "info@thailandgroupescape.com",
-  contactPhone: "+66 XXX XXX XXXX",
+  contactPhone: "+66 63 807 4119",
   heroImageUrl: "/placeholder-hero.jpg",
   companyName: "Thailand Group Escape",
 };
@@ -38,7 +38,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        
+
         <div className="relative z-20 text-center px-4 max-w-5xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Thailand Luxury Group Trip (5–6 People)
@@ -72,7 +72,7 @@ export default function Home() {
           <p className="text-center text-gray-600 mb-12 text-lg">
             Everything you need for an unforgettable experience
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Group Size */}
             <div className="bg-gradient-to-br from-slate-50 to-blue-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
@@ -147,7 +147,7 @@ export default function Home() {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-slate-900">
             Your Journey Timeline
           </h2>
-          
+
           <div className="space-y-8">
             {/* Step 1 */}
             <div className="flex items-start gap-6">
@@ -216,7 +216,7 @@ export default function Home() {
           <p className="text-center text-gray-600 mb-12 text-lg">
             Complete breakdown of your investment
           </p>
-          
+
           <div className="bg-gradient-to-br from-slate-900 to-blue-900 rounded-2xl shadow-2xl overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left">
@@ -299,7 +299,7 @@ export default function Home() {
           <p className="text-center text-yellow-600 mb-12 text-lg font-semibold">
             📸 Images will be updated soon
           </p>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Placeholder 1 */}
             <div className="aspect-square bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl shadow-lg flex items-center justify-center text-white text-center p-6">
@@ -361,7 +361,7 @@ export default function Home() {
           <p className="text-center text-yellow-600 mb-12 text-lg font-semibold">
             🎥 Official trip experience video coming soon
           </p>
-          
+
           <div className="aspect-video bg-gradient-to-br from-slate-800 to-blue-900 rounded-2xl shadow-2xl flex items-center justify-center text-white overflow-hidden">
             <div className="text-center p-8">
               <div className="text-8xl mb-6">▶️</div>
@@ -378,7 +378,7 @@ export default function Home() {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
             Your Safety & Comfort Matter
           </h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-6xl mb-4">🔒</div>
@@ -416,7 +416,7 @@ export default function Home() {
           <p className="text-center text-gray-600 mb-12 text-lg">
             Fill in your details and we&apos;ll get back to you within 24 hours
           </p>
-          
+
           <form onSubmit={handleSubmit} className="bg-white p-8 md:p-12 rounded-2xl shadow-xl">
             <div className="space-y-6">
               <div>

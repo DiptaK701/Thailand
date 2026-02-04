@@ -71,10 +71,27 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-size: cover;
+      background-size: contain;
       background-position: center;
+      background-repeat: no-repeat;
       transform: scale(1);
       transition: transform 8s ease-out;
+      z-index: 1;
+    }
+
+    /* Blurred Background for Fill */
+    .slide-bg::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      left: -10%;
+      width: 120%;
+      height: 120%;
+      background-image: inherit;
+      background-size: cover;
+      background-position: center;
+      filter: blur(20px) brightness(0.6);
+      z-index: -1;
     }
 
     .slide.active .slide-bg {

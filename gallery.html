@@ -71,12 +71,12 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-size: contain;
-      background-position: center;
+      background-size: 0 0;
+      /* Hide original painting */
       background-repeat: no-repeat;
       transform: scale(1);
       transition: transform 8s ease-out;
-      z-index: 1;
+      z-index: 0;
     }
 
     /* Blurred Background for Fill */
@@ -91,7 +91,22 @@
       background-size: cover;
       background-position: center;
       filter: blur(20px) brightness(0.6);
-      z-index: -1;
+      z-index: 1;
+    }
+
+    /* Sharp Image for Content */
+    .slide-bg::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: inherit;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 2;
     }
 
     .slide.active .slide-bg {
@@ -147,6 +162,7 @@
           rgba(5, 6, 10, 0.1) 40%,
           rgba(5, 6, 10, 0.3) 70%,
           rgba(5, 6, 10, 0.85) 100%);
+      z-index: 5;
     }
 
     /* Slide Content */

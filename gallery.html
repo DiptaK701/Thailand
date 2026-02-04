@@ -58,6 +58,45 @@
       opacity: 0;
       visibility: hidden;
       transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.2s;
+
+      /* Define Image Variable Per Slide */
+      --slide-img: none;
+    }
+
+    .slide:nth-child(2) {
+      --slide-img: url('images/gallery-chauffeur.jpg');
+    }
+
+    .slide:nth-child(3) {
+      --slide-img: url('images/gallery-cocktail.png');
+    }
+
+    .slide:nth-child(4) {
+      --slide-img: url('images/gallery-dining.png');
+    }
+
+    .slide:nth-child(5) {
+      --slide-img: url('images/gallery-villa.jpg');
+    }
+
+    .slide:nth-child(6) {
+      --slide-img: url('images/gallery-poolparty.jpg');
+    }
+
+    .slide:nth-child(7) {
+      --slide-img: url('images/gallery-extra-1.jpg');
+    }
+
+    .slide:nth-child(8) {
+      --slide-img: url('images/gallery-extra-2.jpg');
+    }
+
+    .slide:nth-child(9) {
+      --slide-img: url('images/gallery-extra-3.jpg');
+    }
+
+    .slide:nth-child(10) {
+      --slide-img: url('images/gallery-extra-4.jpg');
     }
 
     .slide.active {
@@ -65,92 +104,47 @@
       visibility: visible;
     }
 
-    .slide-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: 0 0;
-      /* Hide original painting */
-      background-repeat: no-repeat;
-      transform: scale(1);
-      transition: transform 8s ease-out;
-      z-index: 0;
-    }
-
-    /* Blurred Background for Fill */
-    .slide-bg::before {
-      content: '';
+    /* Blurred Background Layer (Cover) */
+    .slide-bg-blur {
       position: absolute;
       top: -10%;
       left: -10%;
       width: 120%;
       height: 120%;
-      background-image: inherit;
+      background-image: var(--slide-img);
       background-size: cover;
       background-position: center;
-      filter: blur(20px) brightness(0.6);
-      z-index: 1;
+      filter: blur(30px) brightness(0.5);
+      z-index: 0;
+      pointer-events: none;
+      transform: scale(1);
+      transition: transform 8s ease-out;
     }
 
-    /* Sharp Image for Content */
-    .slide-bg::after {
-      content: '';
+    /* Sharp Image Layer (Contain) */
+    .slide-img-sharp {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: inherit;
+      background-image: var(--slide-img);
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
-      z-index: 2;
+      z-index: 1;
+      transform: scale(1);
+      transition: transform 8s ease-out;
     }
 
-    .slide.active .slide-bg {
+    /* Zoom Effect on Active */
+    .slide.active .slide-bg-blur,
+    .slide.active .slide-img-sharp {
       transform: scale(1.05);
     }
 
-    /* Slide Images - Note: header-overlay is child 1, so slides are children 2-6 */
-    .slide:nth-child(2) .slide-bg {
-      background-image: url('images/gallery-chauffeur.jpg');
-    }
-
-    .slide:nth-child(3) .slide-bg {
-      background-image: url('images/gallery-cocktail.png');
-    }
-
-    .slide:nth-child(4) .slide-bg {
-      background-image: url('images/gallery-dining.png');
-    }
-
-    .slide:nth-child(5) .slide-bg {
-      background-image: url('images/gallery-villa.jpg');
-    }
-
-    .slide:nth-child(6) .slide-bg {
-      background-image: url('images/gallery-poolparty.jpg');
-    }
-
-    .slide:nth-child(7) .slide-bg {
-      background-image: url('images/gallery-extra-1.jpg');
-    }
-
-    .slide:nth-child(8) .slide-bg {
-      background-image: url('images/gallery-extra-2.jpg');
-    }
-
-    .slide:nth-child(9) .slide-bg {
-      background-image: url('images/gallery-extra-3.jpg');
-    }
-
-    .slide:nth-child(10) .slide-bg {
-      background-image: url('images/gallery-extra-4.jpg');
-    }
-
     /* Gradient Overlay */
+    /* Ensure text readability */
     .slide-overlay {
       position: absolute;
       top: 0;
@@ -162,7 +156,8 @@
           rgba(5, 6, 10, 0.1) 40%,
           rgba(5, 6, 10, 0.3) 70%,
           rgba(5, 6, 10, 0.85) 100%);
-      z-index: 5;
+      z-index: 2;
+      pointer-events: none;
     }
 
     /* Slide Content */
@@ -202,7 +197,7 @@
       line-height: 1.1;
       margin-bottom: 16px;
       max-width: 700px;
-      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
     }
 
     .slide-title span {
@@ -218,6 +213,7 @@
       line-height: 1.7;
       max-width: 500px;
       margin-bottom: 28px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     /* Navigation */
@@ -445,33 +441,6 @@
       color: var(--gold-soft);
     }
 
-    /* Shimmer effect */
-    .slide-bg::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(90deg,
-          transparent,
-          rgba(255, 255, 255, 0.02),
-          transparent);
-      animation: shimmer 12s ease-in-out infinite;
-    }
-
-    @keyframes shimmer {
-
-      0%,
-      100% {
-        left: -100%;
-      }
-
-      50% {
-        left: 200%;
-      }
-    }
-
     /* Responsive */
     @media (max-width: 768px) {
       .header-overlay {
@@ -541,7 +510,8 @@
 
     <!-- Slides -->
     <div class="slide active">
-      <div class="slide-bg"></div>
+      <div class="slide-bg-blur"></div>
+      <div class="slide-img-sharp"></div>
       <div class="slide-overlay"></div>
       <div class="slide-content">
         <div class="slide-tag">Elite Transportation</div>
@@ -552,7 +522,8 @@
     </div>
 
     <div class="slide">
-      <div class="slide-bg"></div>
+      <div class="slide-bg-blur"></div>
+      <div class="slide-img-sharp"></div>
       <div class="slide-overlay"></div>
       <div class="slide-content">
         <div class="slide-tag">Premium Spirits</div>
@@ -563,7 +534,8 @@
     </div>
 
     <div class="slide">
-      <div class="slide-bg"></div>
+      <div class="slide-bg-blur"></div>
+      <div class="slide-img-sharp"></div>
       <div class="slide-overlay"></div>
       <div class="slide-content">
         <div class="slide-tag">Culinary Excellence</div>
@@ -574,7 +546,8 @@
     </div>
 
     <div class="slide">
-      <div class="slide-bg"></div>
+      <div class="slide-bg-blur"></div>
+      <div class="slide-img-sharp"></div>
       <div class="slide-overlay"></div>
       <div class="slide-content">
         <div class="slide-tag">Luxury Villas</div>
@@ -585,7 +558,8 @@
     </div>
 
     <div class="slide">
-      <div class="slide-bg"></div>
+      <div class="slide-bg-blur"></div>
+      <div class="slide-img-sharp"></div>
       <div class="slide-overlay"></div>
       <div class="slide-content">
         <div class="slide-tag">Exclusive Events</div>
@@ -596,7 +570,8 @@
     </div>
 
     <div class="slide">
-      <div class="slide-bg"></div>
+      <div class="slide-bg-blur"></div>
+      <div class="slide-img-sharp"></div>
       <div class="slide-overlay"></div>
       <div class="slide-content">
         <div class="slide-tag">Atmosphere</div>
@@ -607,7 +582,8 @@
     </div>
 
     <div class="slide">
-      <div class="slide-bg"></div>
+      <div class="slide-bg-blur"></div>
+      <div class="slide-img-sharp"></div>
       <div class="slide-overlay"></div>
       <div class="slide-content">
         <div class="slide-tag">Relaxation</div>
@@ -618,7 +594,8 @@
     </div>
 
     <div class="slide">
-      <div class="slide-bg"></div>
+      <div class="slide-bg-blur"></div>
+      <div class="slide-img-sharp"></div>
       <div class="slide-overlay"></div>
       <div class="slide-content">
         <div class="slide-tag">Celebration</div>
@@ -629,7 +606,8 @@
     </div>
 
     <div class="slide">
-      <div class="slide-bg"></div>
+      <div class="slide-bg-blur"></div>
+      <div class="slide-img-sharp"></div>
       <div class="slide-overlay"></div>
       <div class="slide-content">
         <div class="slide-tag">Lifestyle</div>
